@@ -78,41 +78,7 @@ public class RNDebugWindow : UIWindow
 
 
 
-public class RNDebugViewController : UIViewController {
-    
-    var dataSource:RNDebugItemDatasource!
-    
-    override public func viewDidLoad() {
-        super.viewDidLoad()
-        let view = buildVerticalStackView()
-        self.view.addSubview(view)
-        
-        view.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addConstraints([
-            NSLayoutConstraint(item: view, attribute: .Top, relatedBy: .Equal, toItem: self.view, attribute: .Top, multiplier: 1, constant: 0),
-            NSLayoutConstraint(item: view, attribute: .Bottom, relatedBy: .Equal, toItem: self.view, attribute: .Bottom, multiplier: 1, constant: 0),
-            NSLayoutConstraint(item: view, attribute: .Width, relatedBy: .Equal, toItem: self.view, attribute: .Width, multiplier: 0.98, constant: 0)
-        ])
-    }
-    
-    private func buildVerticalStackView() -> UIStackView{
-        let stackView = UIStackView()
-        stackView.axis = .Vertical
-        stackView.alignment = .Fill
-        stackView.distribution = .EqualSpacing
-        stackView.spacing = 8
-        dataSource.getItems().forEach { item in
-            stackView.addArrangedSubview(item.drawer.createViewForItem())
-        }
-        return stackView
-    }
-}
 
-extension RNDebugViewController : RNDebugItemListener{
-    func listenChangedValue(){
-        dataSource.getItems().forEach{ $0.drawer.updateView() }
-    }
-}
 
 
 

@@ -82,17 +82,21 @@ public class RNDebugItemLabel : RNDebugItem, RNDebugItemDrawable {
 public class RNDebugItemSlider : RNDebugItem, RNDebugItemDrawable {
     weak var view:UIView?
     var ctrlFunc:RNViewSliderCtrlFunc?
-    init(ctrlFunc:RNViewSliderCtrlFunc){
+    var minValue:Float = 0.0
+    var maxValue:Float = 1.0
+    init(ctrlFunc:RNViewSliderCtrlFunc, minValue:Float, maxValue:Float){
         super.init()
         super.drawer = self
         self.ctrlFunc = ctrlFunc
+        self.minValue = minValue
+        self.maxValue = maxValue
     }
     func createViewForItem() -> UIView {
         let frame = CGRect(x: 0, y: 0, width: 200, height: 10)
         let slider = UISlider(frame: frame)
-        slider.minimumValue = 0.0
-        slider.maximumValue = 1.0
-        slider.value = 0.5
+        slider.minimumValue = self.minValue
+        slider.maximumValue = self.maxValue
+        slider.value = 0.0
         slider.addTarget(self, action: #selector(RNDebugItemSlider.onValueChanged(_:)), forControlEvents: .ValueChanged)
         
         view = slider
@@ -161,8 +165,8 @@ public class RNDebugManager {
         let item = RNDebugItemLabel(drawFunc: drawer)
         items.append(item)
     }
-    public func addValueSlider(ctrlFunc: RNViewSliderCtrlFunc){
-        let item = RNDebugItemSlider(ctrlFunc: ctrlFunc)
+    public func addValueSlider(ctrlFunc: RNViewSliderCtrlFunc, minValue:Float, maxValue:Float){
+        let item = RNDebugItemSlider(ctrlFunc: ctrlFunc, minValue:minValue, maxValue:maxValue)
         items.append(item)
     }
     public func addValueTextField(ctrlFunc: RNViewTextFieldCtrlFunc){
@@ -180,6 +184,7 @@ public class RNDebugManager {
             
             if let viewController = window.rootViewController as? RNDebugViewController {
                 viewController.dataSource = self
+                viewController.listener = self
                 listener = viewController
             }
             
@@ -193,6 +198,12 @@ public class RNDebugManager {
         if window != nil {
             listener?.listenChangedValue()
         }
+    }
+}
+
+extension RNDebugManager : RNDebugViewControllerListener {
+    func closeWindow() {
+        window = nil
     }
 }
 

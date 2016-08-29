@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5431AAEF1D749A3300DECF1E /* RNDebugViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5431AAEE1D749A3300DECF1E /* RNDebugViewController.swift */; };
 		54C1C50A1D7192180053EDAF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C1C5091D7192180053EDAF /* AppDelegate.swift */; };
 		54C1C50C1D7192180053EDAF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C1C50B1D7192180053EDAF /* ViewController.swift */; };
 		54C1C50F1D7192180053EDAF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54C1C50D1D7192180053EDAF /* Main.storyboard */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5431AAEE1D749A3300DECF1E /* RNDebugViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNDebugViewController.swift; sourceTree = "<group>"; };
 		54C1C5061D7192180053EDAF /* ResearchWindow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ResearchWindow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		54C1C5091D7192180053EDAF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		54C1C50B1D7192180053EDAF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -42,7 +44,7 @@
 		54C1C4FD1D7192180053EDAF = {
 			isa = PBXGroup;
 			children = (
-				54C1C51B1D72AE7D0053EDAF /* New Group */,
+				54C1C51B1D72AE7D0053EDAF /* RNDebugMenu */,
 				54C1C5081D7192180053EDAF /* ResearchWindow */,
 				54C1C5071D7192180053EDAF /* Products */,
 			);
@@ -69,13 +71,14 @@
 			path = ResearchWindow;
 			sourceTree = "<group>";
 		};
-		54C1C51B1D72AE7D0053EDAF /* New Group */ = {
+		54C1C51B1D72AE7D0053EDAF /* RNDebugMenu */ = {
 			isa = PBXGroup;
 			children = (
 				54C1C51C1D72BA110053EDAF /* RNDebugManager.swift */,
 				54C1C51E1D72D1450053EDAF /* RNDebugWindow.swift */,
+				5431AAEE1D749A3300DECF1E /* RNDebugViewController.swift */,
 			);
-			name = "New Group";
+			name = RNDebugMenu;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -153,6 +156,7 @@
 				54C1C51F1D72D1450053EDAF /* RNDebugWindow.swift in Sources */,
 				54C1C50A1D7192180053EDAF /* AppDelegate.swift in Sources */,
 				54C1C51D1D72BA110053EDAF /* RNDebugManager.swift in Sources */,
+				5431AAEF1D749A3300DECF1E /* RNDebugViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,6 +306,7 @@
 				54C1C51A1D7192180053EDAF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -56,14 +56,19 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        profile?.name = "sshoge"
+        profile?.name = "RNDebugMenu"
         
         RNDebugManager.sharedInstance.addValueLabel{ [weak self] () in
             return "Name:\(self?.profile?.name)"
         }
-        RNDebugManager.sharedInstance.addValueSlider{ [weak self] (slider) in
+        RNDebugManager.sharedInstance.addValueSlider({ [weak self] (slider) in
             self?.changeColor(slider!)
-        }
+        }, minValue: 0.0, maxValue: 1.0)
+        RNDebugManager.sharedInstance.addValueSlider({ [weak self] (slider) in
+            self?.label.font = UIFont.systemFontOfSize(CGFloat((slider?.value)!))
+            self?.label.sizeToFit()
+        }, minValue: 1.0, maxValue: 32.0)
+        
         RNDebugManager.sharedInstance.addValueTextField{ [weak self] (textField) in
             self?.profile?.name = textField?.text
         }
