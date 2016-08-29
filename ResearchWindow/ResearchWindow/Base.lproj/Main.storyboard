@@ -46,6 +46,13 @@
                                     <action selector="onEditingDidEnd:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="AYw-pk-Goc"/>
                                 </connections>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Shx-oO-hAZ">
+                                <rect key="frame" x="129" y="338" width="102" height="30"/>
+                                <state key="normal" title="Release Profile"/>
+                                <connections>
+                                    <action selector="onTouchReleaseProfile:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6SB-Pp-4Q7"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     </view>

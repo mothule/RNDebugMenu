@@ -13,7 +13,7 @@ import UIKit
 class Profile {
     var name:String? {
         didSet{
-            RNDebugManager.sharedInstance.notifyChangedValue()
+//            RNDebugManager.sharedInstance.notifyChangedValue()
         }
     }
     var age:Int?
@@ -36,26 +36,39 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var label: UILabel!
     private var name:String!
-    private var profile:Profile = Profile()
+    private var profile:Profile? = Profile()
     
     @IBOutlet weak var textField: UITextField!
     @IBAction func onEditingDidEnd(sender: UITextField) {
-        profile.name = sender.text
+        profile?.name = sender.text
     }
 
     @IBAction func onEditingChanged(sender: UITextField) {
-        profile.name = sender.text
+        profile?.name = sender.text
     }
+    
+    @IBAction func onTouchReleaseProfile(sender: UIButton) {
+        profile = nil
+        RNDebugManager.sharedInstance.notifyChangedValue()
+
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        profile.name = "sshoge"
+        profile?.name = "sshoge"
         
-        //TODO: 変数ではなくクロージャにしたほうが、動的変化を表示できる.
-        RNDebugManager.sharedInstance.addValueLabel("Name",value: name)
-        RNDebugManager.sharedInstance.addValueLabel("Profile.Name",value: profile.name)
+        RNDebugManager.sharedInstance.addValueLabel{ [weak self] () in
+            return "Name:\(self?.profile?.name)"
+        }
+        RNDebugManager.sharedInstance.addValueSlider{ [weak self] (slider) in
+            self?.changeColor(slider!)
+        }
+        RNDebugManager.sharedInstance.addValueTextField{ [weak self] (textField) in
+            self?.profile?.name = textField?.text
+        }
         
-        textField.text = profile.name
+        textField.text = profile?.name
     }
 
     @IBAction func onTouchButton(sender: UIButton) {
