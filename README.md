@@ -1,6 +1,10 @@
 # RNDebugMenu
 This library will display a menu that allows you to edit and display the variable.
 
+![Library's animation](https://raw.github.com/wiki/mothule/RNDebugMenu/Docs/Imgs/LibraryPromotionAnimation.gif)
+
+
+
 # Features
 - You can your any variables show using Default UIKit.
 - You can your any variables tweak using Default UIKit.
