@@ -1,7 +1,8 @@
 # RNDebugMenu
 This library will display a menu that allows you to edit and display the variable.
 
-![Library's animation](https://raw.github.com/wiki/mothule/RNDebugMenu/Docs/Imgs/LibraryPromotionAnimation.gif)
+![librarypromotionanimation](https://cloud.githubusercontent.com/assets/974367/18095335/a15d3a22-6f11-11e6-8506-83d179bcc9a3.gif)
+
 
 
 
