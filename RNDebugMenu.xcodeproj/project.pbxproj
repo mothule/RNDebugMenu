@@ -35,6 +35,7 @@
 		546DFEA31D75CDE8008B928E /* RNDebugManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNDebugManager.swift; sourceTree = "<group>"; };
 		546DFEA41D75CDE8008B928E /* RNDebugViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNDebugViewController.swift; sourceTree = "<group>"; };
 		546DFEA51D75CDE8008B928E /* RNDebugWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNDebugWindow.swift; sourceTree = "<group>"; };
+		546DFEBE1D75D00B008B928E /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +60,7 @@
 		546DFE7F1D75CCF9008B928E = {
 			isa = PBXGroup;
 			children = (
+				546DFEBE1D75D00B008B928E /* README.md */,
 				546DFE8B1D75CCF9008B928E /* RNDebugMenu */,
 				546DFE971D75CCF9008B928E /* RNDebugMenuTests */,
 				546DFE8A1D75CCF9008B928E /* Products */,
