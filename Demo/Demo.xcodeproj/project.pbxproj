@@ -7,27 +7,28 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5431AAEF1D749A3300DECF1E /* RNDebugViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5431AAEE1D749A3300DECF1E /* RNDebugViewController.swift */; };
-		54C1C50A1D7192180053EDAF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C1C5091D7192180053EDAF /* AppDelegate.swift */; };
-		54C1C50C1D7192180053EDAF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C1C50B1D7192180053EDAF /* ViewController.swift */; };
-		54C1C50F1D7192180053EDAF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54C1C50D1D7192180053EDAF /* Main.storyboard */; };
-		54C1C5111D7192180053EDAF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 54C1C5101D7192180053EDAF /* Assets.xcassets */; };
-		54C1C5141D7192180053EDAF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54C1C5121D7192180053EDAF /* LaunchScreen.storyboard */; };
-		54C1C51D1D72BA110053EDAF /* RNDebugManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C1C51C1D72BA110053EDAF /* RNDebugManager.swift */; };
-		54C1C51F1D72D1450053EDAF /* RNDebugWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C1C51E1D72D1450053EDAF /* RNDebugWindow.swift */; };
+		546DFEAA1D75CE8F008B928E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546DFEA91D75CE8F008B928E /* AppDelegate.swift */; };
+		546DFEAC1D75CE96008B928E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546DFEAB1D75CE96008B928E /* ViewController.swift */; };
+		546DFEAE1D75CE9F008B928E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 546DFEAD1D75CE9F008B928E /* Assets.xcassets */; };
+		546DFEB01D75CEA6008B928E /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 546DFEAF1D75CEA6008B928E /* Info.plist */; };
+		546DFEB31D75CEC6008B928E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 546DFEB11D75CEC6008B928E /* Main.storyboard */; };
+		546DFEB61D75CECD008B928E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 546DFEB41D75CECD008B928E /* LaunchScreen.storyboard */; };
+		546DFEBB1D75CF0E008B928E /* RNDebugManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546DFEB81D75CF0E008B928E /* RNDebugManager.swift */; };
+		546DFEBC1D75CF0E008B928E /* RNDebugViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546DFEB91D75CF0E008B928E /* RNDebugViewController.swift */; };
+		546DFEBD1D75CF0E008B928E /* RNDebugWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546DFEBA1D75CF0E008B928E /* RNDebugWindow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5431AAEE1D749A3300DECF1E /* RNDebugViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNDebugViewController.swift; sourceTree = "<group>"; };
-		54C1C5061D7192180053EDAF /* ResearchWindow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ResearchWindow.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		54C1C5091D7192180053EDAF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		54C1C50B1D7192180053EDAF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		54C1C50E1D7192180053EDAF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		54C1C5101D7192180053EDAF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		54C1C5131D7192180053EDAF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		54C1C5151D7192180053EDAF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		54C1C51C1D72BA110053EDAF /* RNDebugManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RNDebugManager.swift; path = ResearchWindow/RNDebugManager.swift; sourceTree = "<group>"; };
-		54C1C51E1D72D1450053EDAF /* RNDebugWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNDebugWindow.swift; sourceTree = "<group>"; };
+		546DFEA91D75CE8F008B928E /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Demo/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
+		546DFEAB1D75CE96008B928E /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = Demo/ViewController.swift; sourceTree = SOURCE_ROOT; };
+		546DFEAD1D75CE9F008B928E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Demo/Assets.xcassets; sourceTree = SOURCE_ROOT; };
+		546DFEAF1D75CEA6008B928E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Demo/Info.plist; sourceTree = SOURCE_ROOT; };
+		546DFEB21D75CEC6008B928E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Demo/Base.lproj/Main.storyboard; sourceTree = SOURCE_ROOT; };
+		546DFEB51D75CECD008B928E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Demo/Base.lproj/LaunchScreen.storyboard; sourceTree = SOURCE_ROOT; };
+		546DFEB81D75CF0E008B928E /* RNDebugManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RNDebugManager.swift; path = ../RNDebugMenu/RNDebugManager.swift; sourceTree = "<group>"; };
+		546DFEB91D75CF0E008B928E /* RNDebugViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RNDebugViewController.swift; path = ../RNDebugMenu/RNDebugViewController.swift; sourceTree = "<group>"; };
+		546DFEBA1D75CF0E008B928E /* RNDebugWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RNDebugWindow.swift; path = ../RNDebugMenu/RNDebugWindow.swift; sourceTree = "<group>"; };
+		54C1C5061D7192180053EDAF /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,11 +42,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		546DFEB71D75CEFD008B928E /* RNDebugMenu */ = {
+			isa = PBXGroup;
+			children = (
+				546DFEB81D75CF0E008B928E /* RNDebugManager.swift */,
+				546DFEB91D75CF0E008B928E /* RNDebugViewController.swift */,
+				546DFEBA1D75CF0E008B928E /* RNDebugWindow.swift */,
+			);
+			name = RNDebugMenu;
+			sourceTree = "<group>";
+		};
 		54C1C4FD1D7192180053EDAF = {
 			isa = PBXGroup;
 			children = (
-				54C1C51B1D72AE7D0053EDAF /* RNDebugMenu */,
-				54C1C5081D7192180053EDAF /* ResearchWindow */,
+				546DFEB71D75CEFD008B928E /* RNDebugMenu */,
+				54C1C5081D7192180053EDAF /* Demo */,
 				54C1C5071D7192180053EDAF /* Products */,
 			);
 			sourceTree = "<group>";
@@ -53,40 +64,31 @@
 		54C1C5071D7192180053EDAF /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				54C1C5061D7192180053EDAF /* ResearchWindow.app */,
+				54C1C5061D7192180053EDAF /* Demo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		54C1C5081D7192180053EDAF /* ResearchWindow */ = {
+		54C1C5081D7192180053EDAF /* Demo */ = {
 			isa = PBXGroup;
 			children = (
-				54C1C5091D7192180053EDAF /* AppDelegate.swift */,
-				54C1C50B1D7192180053EDAF /* ViewController.swift */,
-				54C1C50D1D7192180053EDAF /* Main.storyboard */,
-				54C1C5101D7192180053EDAF /* Assets.xcassets */,
-				54C1C5121D7192180053EDAF /* LaunchScreen.storyboard */,
-				54C1C5151D7192180053EDAF /* Info.plist */,
+				546DFEA91D75CE8F008B928E /* AppDelegate.swift */,
+				546DFEAB1D75CE96008B928E /* ViewController.swift */,
+				546DFEAD1D75CE9F008B928E /* Assets.xcassets */,
+				546DFEB11D75CEC6008B928E /* Main.storyboard */,
+				546DFEB41D75CECD008B928E /* LaunchScreen.storyboard */,
+				546DFEAF1D75CEA6008B928E /* Info.plist */,
 			);
+			name = Demo;
 			path = ResearchWindow;
-			sourceTree = "<group>";
-		};
-		54C1C51B1D72AE7D0053EDAF /* RNDebugMenu */ = {
-			isa = PBXGroup;
-			children = (
-				54C1C51C1D72BA110053EDAF /* RNDebugManager.swift */,
-				54C1C51E1D72D1450053EDAF /* RNDebugWindow.swift */,
-				5431AAEE1D749A3300DECF1E /* RNDebugViewController.swift */,
-			);
-			name = RNDebugMenu;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		54C1C5051D7192180053EDAF /* ResearchWindow */ = {
+		54C1C5051D7192180053EDAF /* Demo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 54C1C5181D7192180053EDAF /* Build configuration list for PBXNativeTarget "ResearchWindow" */;
+			buildConfigurationList = 54C1C5181D7192180053EDAF /* Build configuration list for PBXNativeTarget "Demo" */;
 			buildPhases = (
 				54C1C5021D7192180053EDAF /* Sources */,
 				54C1C5031D7192180053EDAF /* Frameworks */,
@@ -96,9 +98,9 @@
 			);
 			dependencies = (
 			);
-			name = ResearchWindow;
+			name = Demo;
 			productName = ResearchWindow;
-			productReference = 54C1C5061D7192180053EDAF /* ResearchWindow.app */;
+			productReference = 54C1C5061D7192180053EDAF /* Demo.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -116,7 +118,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 54C1C5011D7192180053EDAF /* Build configuration list for PBXProject "ResearchWindow" */;
+			buildConfigurationList = 54C1C5011D7192180053EDAF /* Build configuration list for PBXProject "Demo" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -129,7 +131,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				54C1C5051D7192180053EDAF /* ResearchWindow */,
+				54C1C5051D7192180053EDAF /* Demo */,
 			);
 		};
 /* End PBXProject section */
@@ -139,9 +141,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				54C1C5141D7192180053EDAF /* LaunchScreen.storyboard in Resources */,
-				54C1C5111D7192180053EDAF /* Assets.xcassets in Resources */,
-				54C1C50F1D7192180053EDAF /* Main.storyboard in Resources */,
+				546DFEB01D75CEA6008B928E /* Info.plist in Resources */,
+				546DFEB61D75CECD008B928E /* LaunchScreen.storyboard in Resources */,
+				546DFEAE1D75CE9F008B928E /* Assets.xcassets in Resources */,
+				546DFEB31D75CEC6008B928E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -152,29 +155,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				54C1C50C1D7192180053EDAF /* ViewController.swift in Sources */,
-				54C1C51F1D72D1450053EDAF /* RNDebugWindow.swift in Sources */,
-				54C1C50A1D7192180053EDAF /* AppDelegate.swift in Sources */,
-				54C1C51D1D72BA110053EDAF /* RNDebugManager.swift in Sources */,
-				5431AAEF1D749A3300DECF1E /* RNDebugViewController.swift in Sources */,
+				546DFEBC1D75CF0E008B928E /* RNDebugViewController.swift in Sources */,
+				546DFEAC1D75CE96008B928E /* ViewController.swift in Sources */,
+				546DFEBD1D75CF0E008B928E /* RNDebugWindow.swift in Sources */,
+				546DFEAA1D75CE8F008B928E /* AppDelegate.swift in Sources */,
+				546DFEBB1D75CF0E008B928E /* RNDebugManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		54C1C50D1D7192180053EDAF /* Main.storyboard */ = {
+		546DFEB11D75CEC6008B928E /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				54C1C50E1D7192180053EDAF /* Base */,
+				546DFEB21D75CEC6008B928E /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		54C1C5121D7192180053EDAF /* LaunchScreen.storyboard */ = {
+		546DFEB41D75CECD008B928E /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				54C1C5131D7192180053EDAF /* Base */,
+				546DFEB51D75CECD008B928E /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -269,9 +272,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = ResearchWindow/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Demo/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = jp.mothule.ResearchWindow;
+				PRODUCT_BUNDLE_IDENTIFIER = jp.mothule.Demo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -280,9 +283,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = ResearchWindow/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Demo/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = jp.mothule.ResearchWindow;
+				PRODUCT_BUNDLE_IDENTIFIER = jp.mothule.Demo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -290,7 +293,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		54C1C5011D7192180053EDAF /* Build configuration list for PBXProject "ResearchWindow" */ = {
+		54C1C5011D7192180053EDAF /* Build configuration list for PBXProject "Demo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				54C1C5161D7192180053EDAF /* Debug */,
@@ -299,7 +302,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		54C1C5181D7192180053EDAF /* Build configuration list for PBXNativeTarget "ResearchWindow" */ = {
+		54C1C5181D7192180053EDAF /* Build configuration list for PBXNativeTarget "Demo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				54C1C5191D7192180053EDAF /* Debug */,
