@@ -70,6 +70,13 @@ class ViewController: UIViewController {
             self?.profile?.name = textField?.text
             self?.textField.text = textField?.text
         }
+        
+        RNDebugManager.sharedInstance.addButton({ [weak self] (button) in
+                self?.profile?.name = ""
+                self?.textField.text = ""
+            }, drawFunc: {(button) in
+                button?.setTitle("Clear", forState: .Normal)
+            })
 
         textField.text = profile?.name
     }

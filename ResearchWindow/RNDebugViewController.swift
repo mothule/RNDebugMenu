@@ -71,7 +71,7 @@ public class RNDebugViewController : UIViewController {
         stackView.distribution = .EqualSpacing
         stackView.spacing = 8
         dataSource.getItems().forEach { item in
-            stackView.addArrangedSubview(item.drawer.createViewForItem())
+            stackView.addArrangedSubview(item.viewable.createViewForItem())
         }
         return stackView
     }
@@ -79,6 +79,6 @@ public class RNDebugViewController : UIViewController {
 
 extension RNDebugViewController : RNDebugItemListener{
     func listenChangedValue(){
-        dataSource.getItems().forEach{ $0.drawer.updateView() }
+        dataSource.getItems().forEach{ $0.viewable.updateView() }
     }
 }

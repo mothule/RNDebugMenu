@@ -14,29 +14,32 @@ import UIKit
 
 
 public typealias RNViewDrawFunc = () -> (Any?)
+public typealias RNViewButtonDrawFunc = (UIButton?) -> ()
 
 // Wait for Swift3
 //public typealias RNViewCtrlFunc<T> (T?) -> ()
 public typealias RNViewSliderCtrlFunc = (UISlider?) -> ()
 public typealias RNViewTextFieldCtrlFunc = (UITextField?) -> ()
+public typealias RNViewButtonCtrlFunc = (UIButton?) -> ()
 
 
-protocol RNDebugItemDrawable {
+
+protocol RNDebugItemViewable {
     func createViewForItem() -> UIView
     func updateView()
 }
 public class RNDebugItem {
-    var drawer: RNDebugItemDrawable!
+    var viewable: RNDebugItemViewable!
 }
 
-public class RNDebugItemLabel: RNDebugItem, RNDebugItemDrawable {
+public class RNDebugItemLabel: RNDebugItem, RNDebugItemViewable {
     weak var view: UIView?
     var loopTimer: NSTimer!
     var drawFunc: RNViewDrawFunc?
 
     init(drawFunc: RNViewDrawFunc) {
         super.init()
-        super.drawer = self
+        super.viewable = self
         self.drawFunc = drawFunc
     }
 
@@ -65,14 +68,14 @@ public class RNDebugItemLabel: RNDebugItem, RNDebugItemDrawable {
         label.text = drawFunc?() as? String
     }
 }
-public class RNDebugItemSlider: RNDebugItem, RNDebugItemDrawable {
+public class RNDebugItemSlider: RNDebugItem, RNDebugItemViewable {
     weak var view: UIView?
     var ctrlFunc: RNViewSliderCtrlFunc?
     var minValue: Float = 0.0
     var maxValue: Float = 1.0
     init(ctrlFunc: RNViewSliderCtrlFunc, minValue: Float, maxValue: Float) {
         super.init()
-        super.drawer = self
+        super.viewable = self
         self.ctrlFunc = ctrlFunc
         self.minValue = minValue
         self.maxValue = maxValue
@@ -96,12 +99,12 @@ public class RNDebugItemSlider: RNDebugItem, RNDebugItemDrawable {
     func updateView() {
     }
 }
-public class RNDebugItemTextField: RNDebugItem, RNDebugItemDrawable {
+public class RNDebugItemTextField: RNDebugItem, RNDebugItemViewable {
     weak var view: UIView?
     var ctrlFunc: RNViewTextFieldCtrlFunc?
     init(ctrlFunc: RNViewTextFieldCtrlFunc) {
         super.init()
-        super.drawer = self
+        super.viewable = self
         self.ctrlFunc = ctrlFunc
     }
     func createViewForItem() -> UIView {
@@ -120,6 +123,35 @@ public class RNDebugItemTextField: RNDebugItem, RNDebugItemDrawable {
     @objc func onEditingChanged(sender: UITextField) {
         ctrlFunc?(sender)
     }
+}
+public class RNDebugItemButton : RNDebugItem, RNDebugItemViewable {
+    weak var view:UIView?
+    var ctrlFunc: RNViewButtonCtrlFunc?
+    var drawFunc: RNViewButtonDrawFunc?
+    
+    init(ctrlFunc: RNViewButtonCtrlFunc, drawFunc:RNViewButtonDrawFunc){
+        super.init()
+        super.viewable = self
+        self.ctrlFunc = ctrlFunc
+        self.drawFunc = drawFunc
+    }
+    
+    func createViewForItem() -> UIView {
+        let frame = CGRect(x: 0, y: 0, width: 200, height: 10)
+        let button = UIButton(type: .System)
+        button.frame = frame
+        button.addTarget(self, action: #selector(RNDebugItemButton.onTouchButton(_:)), forControlEvents: .TouchUpInside)
+        view = button
+        updateView()
+        return button
+    }
+    func updateView() {
+        drawFunc?(view as? UIButton)
+    }
+    @objc func onTouchButton(sender:UIButton){
+        ctrlFunc?(sender)
+    }
+    
 }
 
 
@@ -153,6 +185,10 @@ public class RNDebugManager {
     }
     public func addValueTextField(ctrlFunc: RNViewTextFieldCtrlFunc) {
         let item = RNDebugItemTextField(ctrlFunc:ctrlFunc)
+        items.append(item)
+    }
+    public func addButton(ctrlFunc: RNViewButtonCtrlFunc, drawFunc: RNViewButtonDrawFunc){
+        let item = RNDebugItemButton(ctrlFunc: ctrlFunc, drawFunc: drawFunc)
         items.append(item)
     }
 
