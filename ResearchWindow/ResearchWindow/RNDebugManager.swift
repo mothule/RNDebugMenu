@@ -25,66 +25,52 @@ protocol RNDebugItemDrawable {
     func createViewForItem() -> UIView
     func updateView()
 }
-public class RNDebugItem{
-    var drawer:RNDebugItemDrawable!
+public class RNDebugItem {
+    var drawer: RNDebugItemDrawable!
 }
 
-public class RNDebugItemLabel : RNDebugItem, RNDebugItemDrawable {
-    var format:String
-    var value:Any?
-    weak var view:UIView?
-    var loopTimer:NSTimer!
-    var drawFunc:RNViewDrawFunc?
-    
-    init(format:String, value:Any?){
-        self.format = format
-        self.value = value
-        super.init()
-        super.drawer = self
-    }
-    init(drawFunc:RNViewDrawFunc){
-        self.format = ""
+public class RNDebugItemLabel: RNDebugItem, RNDebugItemDrawable {
+    weak var view: UIView?
+    var loopTimer: NSTimer!
+    var drawFunc: RNViewDrawFunc?
+
+    init(drawFunc: RNViewDrawFunc) {
         super.init()
         super.drawer = self
         self.drawFunc = drawFunc
     }
-    
+
     func createViewForItem() -> UIView {
         let frame = CGRect(x: 0, y: 0, width: 0, height: 50)
         let label = UILabel(frame: frame)
         label.numberOfLines = 0
         view = label
         updateView()
-        
+
         loopTimer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(RNDebugItemLabel.repeatsTimer(_:)), userInfo: nil, repeats: true)
-        
+
         return label
     }
-    
-    deinit{
+
+    deinit {
         if loopTimer != nil { loopTimer.invalidate() }
     }
-    
-    @objc func repeatsTimer(timer:NSTimer){
+
+    @objc func repeatsTimer(timer: NSTimer) {
         updateView()
     }
-    
+
     func updateView() {
         let label = view as! UILabel
-        
-        if let drawFunc = drawFunc {
-            label.text = drawFunc() as? String
-        }else{
-            label.text = format + "\(value)"
-        }
+        label.text = drawFunc?() as? String
     }
 }
-public class RNDebugItemSlider : RNDebugItem, RNDebugItemDrawable {
-    weak var view:UIView?
-    var ctrlFunc:RNViewSliderCtrlFunc?
-    var minValue:Float = 0.0
-    var maxValue:Float = 1.0
-    init(ctrlFunc:RNViewSliderCtrlFunc, minValue:Float, maxValue:Float){
+public class RNDebugItemSlider: RNDebugItem, RNDebugItemDrawable {
+    weak var view: UIView?
+    var ctrlFunc: RNViewSliderCtrlFunc?
+    var minValue: Float = 0.0
+    var maxValue: Float = 1.0
+    init(ctrlFunc: RNViewSliderCtrlFunc, minValue: Float, maxValue: Float) {
         super.init()
         super.drawer = self
         self.ctrlFunc = ctrlFunc
@@ -98,22 +84,22 @@ public class RNDebugItemSlider : RNDebugItem, RNDebugItemDrawable {
         slider.maximumValue = self.maxValue
         slider.value = 0.0
         slider.addTarget(self, action: #selector(RNDebugItemSlider.onValueChanged(_:)), forControlEvents: .ValueChanged)
-        
+
         view = slider
         updateView()
         return view!
     }
-    @objc func onValueChanged(sender:UISlider){
+    @objc func onValueChanged(sender: UISlider) {
         ctrlFunc?(sender)
-        
+
     }
     func updateView() {
     }
 }
-public class RNDebugItemTextField : RNDebugItem, RNDebugItemDrawable{
-    weak var view:UIView?
-    var ctrlFunc:RNViewTextFieldCtrlFunc?
-    init(ctrlFunc:RNViewTextFieldCtrlFunc){
+public class RNDebugItemTextField: RNDebugItem, RNDebugItemDrawable {
+    weak var view: UIView?
+    var ctrlFunc: RNViewTextFieldCtrlFunc?
+    init(ctrlFunc: RNViewTextFieldCtrlFunc) {
         super.init()
         super.drawer = self
         self.ctrlFunc = ctrlFunc
@@ -129,9 +115,9 @@ public class RNDebugItemTextField : RNDebugItem, RNDebugItemDrawable{
         return view!
     }
     func updateView() {
-        
+
     }
-    @objc func onEditingChanged(sender:UITextField){
+    @objc func onEditingChanged(sender: UITextField) {
         ctrlFunc?(sender)
     }
 }
@@ -141,60 +127,56 @@ public class RNDebugItemTextField : RNDebugItem, RNDebugItemDrawable{
 protocol RNDebugItemDatasource {
     func getItems() -> [RNDebugItem]
 }
-protocol RNDebugItemListener{
+protocol RNDebugItemListener {
     func listenChangedValue()
 }
 
 
 public class RNDebugManager {
-    private static var instance:RNDebugManager!
-    public static var sharedInstance:RNDebugManager {
+    private static var instance: RNDebugManager!
+    public static var sharedInstance: RNDebugManager {
         if instance == nil { instance = RNDebugManager() }
         return instance
     }
-    
-    private var window:RNDebugWindow!
-    private var items:[RNDebugItem] = []
-    private var listener:RNDebugItemListener?
-    
-    public func addValueLabel(labelFormat:String, value:Any?){
-        let item = RNDebugItemLabel(format: labelFormat, value: value)
-        items.append(item)
-    }
-    public func addValueLabel(drawer:RNViewDrawFunc){
+
+    private var window: RNDebugWindow!
+    private var items: [RNDebugItem] = []
+    private var listener: RNDebugItemListener?
+
+    public func addValueLabel(drawer: RNViewDrawFunc) {
         let item = RNDebugItemLabel(drawFunc: drawer)
         items.append(item)
     }
-    public func addValueSlider(ctrlFunc: RNViewSliderCtrlFunc, minValue:Float, maxValue:Float){
+    public func addValueSlider(ctrlFunc: RNViewSliderCtrlFunc, minValue: Float, maxValue: Float) {
         let item = RNDebugItemSlider(ctrlFunc: ctrlFunc, minValue:minValue, maxValue:maxValue)
         items.append(item)
     }
-    public func addValueTextField(ctrlFunc: RNViewTextFieldCtrlFunc){
+    public func addValueTextField(ctrlFunc: RNViewTextFieldCtrlFunc) {
         let item = RNDebugItemTextField(ctrlFunc:ctrlFunc)
         items.append(item)
     }
-    
-    
-    public func switchShowOrClose(){
+
+
+    public func switchShowOrClose() {
         let size = UIScreen.mainScreen().bounds.size
         let frame = CGRect(x: 0, y: 0, width: size.width, height: 50)
-        
+
         if window == nil {
             window = RNDebugWindow(frame: frame)
-            
+
             if let viewController = window.rootViewController as? RNDebugViewController {
                 viewController.dataSource = self
                 viewController.listener = self
                 listener = viewController
             }
-            
+
             window.makeKeyAndVisible()
-        }else {
+        } else {
             window = nil
         }
     }
-    
-    public func notifyChangedValue(){
+
+    public func notifyChangedValue() {
         if window != nil {
             listener?.listenChangedValue()
         }
