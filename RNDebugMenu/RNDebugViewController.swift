@@ -28,10 +28,10 @@ public class RNDebugViewController : UIViewController {
         
         view.translatesAutoresizingMaskIntoConstraints = false
         self.view.addConstraints([
-            NSLayoutConstraint(item: view, attribute: .Top, relatedBy: .Equal, toItem: self.view, attribute: .Top, multiplier: 1, constant: 15),
+            NSLayoutConstraint(item: view, attribute: .Top,    relatedBy: .Equal, toItem: self.view, attribute: .Top,    multiplier: 1, constant: 15),
             NSLayoutConstraint(item: view, attribute: .Bottom, relatedBy: .Equal, toItem: self.view, attribute: .Bottom, multiplier: 1, constant: -10),
-            NSLayoutConstraint(item: view, attribute: .Left, relatedBy: .Equal, toItem: self.view, attribute: .Left, multiplier: 1, constant: 10),
-            NSLayoutConstraint(item: view, attribute: .Right, relatedBy: .Equal, toItem: self.view, attribute: .Right, multiplier: 1, constant: -10),
+            NSLayoutConstraint(item: view, attribute: .Left,   relatedBy: .Equal, toItem: self.view, attribute: .Left,   multiplier: 1, constant: 10),
+            NSLayoutConstraint(item: view, attribute: .Right,  relatedBy: .Equal, toItem: self.view, attribute: .Right,  multiplier: 1, constant: -10),
         ])
         
         let stackView = buildVerticalStackView()
@@ -46,14 +46,20 @@ public class RNDebugViewController : UIViewController {
     }
     
     private func buildCloseButton() -> UIButton {
-        let button = UIButton(type: .System)
-        button.frame = CGRect(x: 0, y: 0, width: 10, height: 10)
+        class RNTapExpandableButton : UIButton{
+            override private func pointInside(point: CGPoint, withEvent event: UIEvent?) -> Bool {
+                return CGRectContainsPoint(CGRect(x: bounds.origin.x - 3, y: bounds.origin.y - 10, width: bounds.width + 6, height: bounds.height + 20),
+                                           point)
+            }
+        }
+        let button = RNTapExpandableButton(type: .System)
+        button.frame = CGRect(x: 0, y: 0, width: 15, height: 15)
         button.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-        button.setTitle("x", forState: .Normal)
+        button.setTitle("X", forState: .Normal)
+        button.backgroundColor = UIColor.darkGrayColor()
         button.addTarget(self, action: #selector(RNDebugViewController.onTouchCloseButton(_:)), forControlEvents: .TouchDown)
         return button
     }
-    
     func onTouchCloseButton(sender:UIButton){
         listener.closeWindow()
     }
