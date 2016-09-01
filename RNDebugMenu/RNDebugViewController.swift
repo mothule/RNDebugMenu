@@ -23,16 +23,21 @@ public class RNDebugViewController : UIViewController {
         let view = buildScrollView()
         self.view.addSubview(view)
         
+        // Add a close button
         let closeButton = buildCloseButton()
         self.view.addSubview(closeButton)
-        
         view.translatesAutoresizingMaskIntoConstraints = false
         self.view.addConstraints([
             NSLayoutConstraint(item: view, attribute: .Top,    relatedBy: .Equal, toItem: self.view, attribute: .Top,    multiplier: 1, constant: 15),
             NSLayoutConstraint(item: view, attribute: .Bottom, relatedBy: .Equal, toItem: self.view, attribute: .Bottom, multiplier: 1, constant: -10),
             NSLayoutConstraint(item: view, attribute: .Left,   relatedBy: .Equal, toItem: self.view, attribute: .Left,   multiplier: 1, constant: 10),
             NSLayoutConstraint(item: view, attribute: .Right,  relatedBy: .Equal, toItem: self.view, attribute: .Right,  multiplier: 1, constant: -10),
-        ])
+            ])
+        
+        // Add a expandable guide
+        let guideView = buildGuideView()
+        self.view.addSubview(guideView)
+
         
         let stackView = buildVerticalStackView()
         view.addSubview(stackView)
@@ -43,6 +48,15 @@ public class RNDebugViewController : UIViewController {
             NSLayoutConstraint(item: stackView, attribute: .Left, relatedBy: .Equal, toItem: view, attribute: .Left, multiplier: 1, constant: 0),
             NSLayoutConstraint(item: stackView, attribute: .Right, relatedBy: .Equal, toItem: view, attribute: .Right, multiplier: 1, constant: 0),
         ])
+
+        guideView.translatesAutoresizingMaskIntoConstraints = false
+        guideView.addConstraints([
+            NSLayoutConstraint(item: guideView, attribute: .Right, relatedBy: .Equal, toItem: self.view, attribute: .Right, multiplier: 1, constant: -10),
+            //            NSLayoutConstraint(item: guideView, attribute: .Bottom, relatedBy: .Equal, toItem: self.view, attribute: .Bottom, multiplier: 1, constant:-10),
+            //            NSLayoutConstraint(item: guideView, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .Height, multiplier: 1, constant: 10),
+            //            NSLayoutConstraint(item: guideView, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .Width, multiplier: 1, constant: 10),
+            ])
+//    http://stackoverflow.com/questions/20437843/why-am-i-unable-to-set-auto-layout-constraints-when-adding-constraints-to-a-view
     }
     
     private func buildCloseButton() -> UIButton {
@@ -62,6 +76,13 @@ public class RNDebugViewController : UIViewController {
     }
     func onTouchCloseButton(sender:UIButton){
         listener.closeWindow()
+    }
+    
+    private func buildGuideView() -> UIView {
+        let frame = CGRect(x:0, y: 0, width: 10, height: 10)
+        let view = UIView(frame:frame)
+        view.backgroundColor = UIColor.redColor()
+        return view
     }
     
     private func buildScrollView() -> UIScrollView{

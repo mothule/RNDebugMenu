@@ -18,7 +18,6 @@ public class RNDebugWindow : UIWindow
     }
     
     private var behaviorMode:BehaviorMode = .None
-    
     private var locationInitialTouch:CGPoint!
     
     override init(frame: CGRect) {
@@ -26,9 +25,7 @@ public class RNDebugWindow : UIWindow
         self.backgroundColor = UIColor(red: 0.3, green: 0.4, blue: 0.5, alpha: 0.7)
         self.userInteractionEnabled = true
         self.windowLevel = UIWindowLevelAlert
-        
         self.rootViewController = RNDebugViewController()
-        
     }
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -38,9 +35,7 @@ public class RNDebugWindow : UIWindow
     override public func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         if let touch = touches.first {
             let location = touch.locationInView(self)
-            print("Began:(\(location.x), \(location.y))")
             locationInitialTouch = location
-            
             if location.x > bounds.width - 20 && location.y > bounds.height - 20{
                 behaviorMode = .ChangeWindowSize
             }else{
@@ -52,8 +47,6 @@ public class RNDebugWindow : UIWindow
     override public func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
         if let touch = touches.first {
             let location = touch.locationInView(self)
-            print("Moved:(\(location.x), \(location.y))")
-            
             if behaviorMode == .ChangeWindowSize {
                 frame = CGRect(origin: frame.origin, size: CGSize(width: location.x, height: location.y ))
             }else{
@@ -64,8 +57,6 @@ public class RNDebugWindow : UIWindow
     override public func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
         if let touch = touches.first {
             let location = touch.locationInView(self)
-            print("Ended:(\(location.x), \(location.y))")
-            
             if behaviorMode == .ChangeWindowSize {
                 frame = CGRect(origin: frame.origin, size: CGSize(width: location.x, height: location.y ))
             }else{
