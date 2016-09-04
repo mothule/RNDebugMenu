@@ -9,6 +9,9 @@
 import Foundation
 import UIKit
 
+protocol RNDebugItemDatasource {
+    func getItems() -> [RNDebugItem]
+}
 
 protocol RNDebugViewControllerListener {
     func closeWindow()
@@ -79,7 +82,6 @@ public class RNDebugViewController : UIViewController {
     private func buildGuideView() -> UIView {
         let frame = CGRect(x:0, y: 0, width: 15, height: 15)
         let view = RNChangeGuide(frame:frame)
-//        view.backgroundColor = UIColor.redColor()
         return view
     }
     
@@ -132,7 +134,7 @@ public class RNChangeGuide : UIView {
         for i in 0..<splitSize {
             let x = (bounds.size.width / CGFloat(splitSize)) * CGFloat(i)
             let points:[CGPoint] = [
-                CGPointMake(x, bounds.size.height), CGPointMake(bounds.size.width, x)
+                CGPointMake(x, bounds.size.height-2), CGPointMake(bounds.size.width-2, x)
             ]
             CGContextAddLines(context, points, points.count)
         }

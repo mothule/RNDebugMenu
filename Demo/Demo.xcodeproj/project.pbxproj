@@ -16,6 +16,7 @@
 		546DFEBB1D75CF0E008B928E /* RNDebugManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546DFEB81D75CF0E008B928E /* RNDebugManager.swift */; };
 		546DFEBC1D75CF0E008B928E /* RNDebugViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546DFEB91D75CF0E008B928E /* RNDebugViewController.swift */; };
 		546DFEBD1D75CF0E008B928E /* RNDebugWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546DFEBA1D75CF0E008B928E /* RNDebugWindow.swift */; };
+		54916CFF1D7C0BDB0000E193 /* RNDebugItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54916CFE1D7C0BDB0000E193 /* RNDebugItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		546DFEB81D75CF0E008B928E /* RNDebugManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RNDebugManager.swift; path = ../RNDebugMenu/RNDebugManager.swift; sourceTree = "<group>"; };
 		546DFEB91D75CF0E008B928E /* RNDebugViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RNDebugViewController.swift; path = ../RNDebugMenu/RNDebugViewController.swift; sourceTree = "<group>"; };
 		546DFEBA1D75CF0E008B928E /* RNDebugWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RNDebugWindow.swift; path = ../RNDebugMenu/RNDebugWindow.swift; sourceTree = "<group>"; };
+		54916CFE1D7C0BDB0000E193 /* RNDebugItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RNDebugItem.swift; path = ../RNDebugMenu/RNDebugItem.swift; sourceTree = "<group>"; };
 		54C1C5061D7192180053EDAF /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -45,11 +47,20 @@
 		546DFEB71D75CEFD008B928E /* RNDebugMenu */ = {
 			isa = PBXGroup;
 			children = (
+				54916CFD1D7C0BBA0000E193 /* RNDebugItems */,
 				546DFEB81D75CF0E008B928E /* RNDebugManager.swift */,
 				546DFEB91D75CF0E008B928E /* RNDebugViewController.swift */,
 				546DFEBA1D75CF0E008B928E /* RNDebugWindow.swift */,
 			);
 			name = RNDebugMenu;
+			sourceTree = "<group>";
+		};
+		54916CFD1D7C0BBA0000E193 /* RNDebugItems */ = {
+			isa = PBXGroup;
+			children = (
+				54916CFE1D7C0BDB0000E193 /* RNDebugItem.swift */,
+			);
+			name = RNDebugItems;
 			sourceTree = "<group>";
 		};
 		54C1C4FD1D7192180053EDAF = {
@@ -157,6 +168,7 @@
 			files = (
 				546DFEBC1D75CF0E008B928E /* RNDebugViewController.swift in Sources */,
 				546DFEAC1D75CE96008B928E /* ViewController.swift in Sources */,
+				54916CFF1D7C0BDB0000E193 /* RNDebugItem.swift in Sources */,
 				546DFEBD1D75CF0E008B928E /* RNDebugWindow.swift in Sources */,
 				546DFEAA1D75CE8F008B928E /* AppDelegate.swift in Sources */,
 				546DFEBB1D75CF0E008B928E /* RNDebugManager.swift in Sources */,
