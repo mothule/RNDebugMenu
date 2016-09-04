@@ -20,12 +20,9 @@ public class RNDebugViewController : UIViewController {
     
     override public func viewDidLoad() {
         super.viewDidLoad()
+        
         let view = buildScrollView()
         self.view.addSubview(view)
-        
-        // Add a close button
-        let closeButton = buildCloseButton()
-        self.view.addSubview(closeButton)
         view.translatesAutoresizingMaskIntoConstraints = false
         self.view.addConstraints([
             NSLayoutConstraint(item: view, attribute: .Top,    relatedBy: .Equal, toItem: self.view, attribute: .Top,    multiplier: 1, constant: 15),
@@ -34,9 +31,9 @@ public class RNDebugViewController : UIViewController {
             NSLayoutConstraint(item: view, attribute: .Right,  relatedBy: .Equal, toItem: self.view, attribute: .Right,  multiplier: 1, constant: -10),
             ])
         
-        // Add a expandable guide
-        let guideView = buildGuideView()
-        self.view.addSubview(guideView)
+        // Add a close button
+        let closeButton = buildCloseButton()
+        self.view.addSubview(closeButton)
 
         
         let stackView = buildVerticalStackView()
@@ -49,14 +46,15 @@ public class RNDebugViewController : UIViewController {
             NSLayoutConstraint(item: stackView, attribute: .Right, relatedBy: .Equal, toItem: view, attribute: .Right, multiplier: 1, constant: 0),
         ])
 
+        let guideView = buildGuideView()
         guideView.translatesAutoresizingMaskIntoConstraints = false
-        guideView.addConstraints([
-            NSLayoutConstraint(item: guideView, attribute: .Right, relatedBy: .Equal, toItem: self.view, attribute: .Right, multiplier: 1, constant: -10),
-            //            NSLayoutConstraint(item: guideView, attribute: .Bottom, relatedBy: .Equal, toItem: self.view, attribute: .Bottom, multiplier: 1, constant:-10),
-            //            NSLayoutConstraint(item: guideView, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .Height, multiplier: 1, constant: 10),
-            //            NSLayoutConstraint(item: guideView, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .Width, multiplier: 1, constant: 10),
-            ])
-//    http://stackoverflow.com/questions/20437843/why-am-i-unable-to-set-auto-layout-constraints-when-adding-constraints-to-a-view
+        self.view.addSubview(guideView)
+        self.view.addConstraints([
+            NSLayoutConstraint(item: guideView, attribute: .Right, relatedBy: .Equal, toItem: self.view, attribute: .Right, multiplier: 1, constant: 0),
+            NSLayoutConstraint(item: guideView, attribute: .Bottom, relatedBy: .Equal, toItem: self.view, attribute: .Bottom, multiplier: 1, constant:0),
+            NSLayoutConstraint(item: guideView, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .Height, multiplier: 1, constant: 15),
+            NSLayoutConstraint(item: guideView, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .Width, multiplier: 1, constant: 15),
+        ])
     }
     
     private func buildCloseButton() -> UIButton {
@@ -79,9 +77,9 @@ public class RNDebugViewController : UIViewController {
     }
     
     private func buildGuideView() -> UIView {
-        let frame = CGRect(x:0, y: 0, width: 10, height: 10)
-        let view = UIView(frame:frame)
-        view.backgroundColor = UIColor.redColor()
+        let frame = CGRect(x:0, y: 0, width: 15, height: 15)
+        let view = RNChangeGuide(frame:frame)
+//        view.backgroundColor = UIColor.redColor()
         return view
     }
     
@@ -108,4 +106,39 @@ extension RNDebugViewController : RNDebugItemListener{
     func listenChangedValue(){
         dataSource.getItems().forEach{ $0.viewable.updateView() }
     }
+}
+
+
+public class RNChangeGuide : UIView {
+    override init(frame: CGRect) {
+        super.init(frame:frame)
+        backgroundColor = UIColor.clearColor()
+    }
+    required public init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    override public func drawRect(rect: CGRect) {
+        super.drawRect(rect)
+        let context = UIGraphicsGetCurrentContext()!
+        
+        // Color
+        let color = UIColor.darkGrayColor()
+        CGContextSetStrokeColorWithColor(context, color.CGColor)
+
+        // Line Width
+        CGContextSetLineWidth(context, 2)
+        
+        let splitSize = 4
+        for i in 0..<splitSize {
+            let x = (bounds.size.width / CGFloat(splitSize)) * CGFloat(i)
+            let points:[CGPoint] = [
+                CGPointMake(x, bounds.size.height), CGPointMake(bounds.size.width, x)
+            ]
+            CGContextAddLines(context, points, points.count)
+        }
+        
+        CGContextStrokePath(context)
+    }
+    
+    
 }

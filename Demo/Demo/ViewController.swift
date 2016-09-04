@@ -79,6 +79,7 @@ class ViewController: UIViewController {
             })
 
         textField.text = profile?.name
+            
     }
 
     @IBAction func onTouchButton(sender: UIButton) {
