@@ -57,7 +57,7 @@ public class RNDebugViewController : UIViewController {
             NSLayoutConstraint(item: guideView, attribute: .Bottom, relatedBy: .Equal, toItem: self.view, attribute: .Bottom, multiplier: 1, constant:0),
             NSLayoutConstraint(item: guideView, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .Height, multiplier: 1, constant: 15),
             NSLayoutConstraint(item: guideView, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .Width, multiplier: 1, constant: 15),
-        ])
+        ])        
     }
     
     private func buildCloseButton() -> UIButton {
@@ -92,13 +92,25 @@ public class RNDebugViewController : UIViewController {
     }
     
     private func buildVerticalStackView() -> UIStackView{
-        let stackView = UIStackView()
+        let frame = view.bounds
+        let stackView = UIStackView(frame: frame)
         stackView.axis = .Vertical
         stackView.alignment = .Fill
         stackView.distribution = .EqualSpacing
         stackView.spacing = 8
         dataSource.getItems().forEach { item in
-            stackView.addArrangedSubview(item.viewable.createViewForItem())
+            let v:UIView = item.viewable.createViewForItem()
+            stackView.addArrangedSubview(v)
+
+            v.translatesAutoresizingMaskIntoConstraints = false
+            stackView.addConstraints([
+                NSLayoutConstraint(item: v, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .Width, multiplier: 0, constant: 300)
+            ])
+            if v is UITextView {
+                stackView.addConstraint(
+                    NSLayoutConstraint(item: v, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .Height, multiplier: 0, constant: 50)
+                    )
+            }
         }
         return stackView
     }
@@ -124,13 +136,13 @@ public class RNChangeGuide : UIView {
         let context = UIGraphicsGetCurrentContext()!
         
         // Color
-        let color = UIColor.darkGrayColor()
+        let color = UIColor.lightTextColor()
         CGContextSetStrokeColorWithColor(context, color.CGColor)
 
         // Line Width
         CGContextSetLineWidth(context, 2)
         
-        let splitSize = 4
+        let splitSize = 3
         for i in 0..<splitSize {
             let x = (bounds.size.width / CGFloat(splitSize)) * CGFloat(i)
             let points:[CGPoint] = [

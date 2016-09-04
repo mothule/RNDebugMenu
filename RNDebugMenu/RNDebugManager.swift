@@ -29,20 +29,19 @@ public class RNDebugManager {
     private var listener: RNDebugItemListener?
 
     public func addValueLabel(drawer: RNViewDrawFunc) {
-        let item = RNDebugItemLabel(drawFunc: drawer)
-        items.append(item)
+        items.append(RNDebugItemLabel(drawFunc: drawer))
     }
     public func addValueSlider(ctrlFunc: RNViewSliderCtrlFunc, minValue: Float, maxValue: Float) {
-        let item = RNDebugItemSlider(ctrlFunc: ctrlFunc, minValue:minValue, maxValue:maxValue)
-        items.append(item)
+        items.append(RNDebugItemSlider(ctrlFunc: ctrlFunc, minValue:minValue, maxValue:maxValue))
     }
     public func addValueTextField(ctrlFunc: RNViewTextFieldCtrlFunc) {
-        let item = RNDebugItemTextField(ctrlFunc:ctrlFunc)
-        items.append(item)
+        items.append(RNDebugItemTextField(ctrlFunc:ctrlFunc))
+    }
+    public func addValueTextView(ctrlFunc: RNViewTextViewCtrlFunc){
+        items.append(RNDebugItemTextView(ctrlFunc:ctrlFunc))
     }
     public func addButton(ctrlFunc: RNViewButtonCtrlFunc, drawFunc: RNViewButtonDrawFunc){
-        let item = RNDebugItemButton(ctrlFunc: ctrlFunc, drawFunc: drawFunc)
-        items.append(item)
+        items.append(RNDebugItemButton(ctrlFunc: ctrlFunc, drawFunc: drawFunc))
     }
 
 

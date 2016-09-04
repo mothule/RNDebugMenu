@@ -17,6 +17,8 @@ public typealias RNViewButtonDrawFunc = (UIButton?) -> ()
 public typealias RNViewSliderCtrlFunc = (UISlider?) -> ()
 public typealias RNViewTextFieldCtrlFunc = (UITextField?) -> ()
 public typealias RNViewButtonCtrlFunc = (UIButton?) -> ()
+public typealias RNViewTextViewCtrlFunc = (UITextView?) -> ()
+
 
 
 
@@ -25,7 +27,7 @@ protocol RNDebugItemViewable {
     func createViewForItem() -> UIView
     func updateView()
 }
-public class RNDebugItem {
+public class RNDebugItem : NSObject{
     var viewable: RNDebugItemViewable!
 }
 
@@ -46,7 +48,7 @@ public class RNDebugItemLabel: RNDebugItem, RNDebugItemViewable {
     }
     
     func createViewForItem() -> UIView {
-        let frame = CGRect(x: 0, y: 0, width: 0, height: 50)
+        let frame = CGRect(x: 0, y: 0, width: 300, height: 50)
         let label = UILabel(frame: frame)
         label.numberOfLines = 0
         view = label
@@ -89,7 +91,7 @@ public class RNDebugItemSlider: RNDebugItem, RNDebugItemViewable {
         self.maxValue = maxValue
     }
     func createViewForItem() -> UIView {
-        let frame = CGRect(x: 0, y: 0, width: 200, height: 10)
+        let frame = CGRect(x: 0, y: 0, width: 300, height: 10)
         let slider = UISlider(frame: frame)
         slider.minimumValue = self.minValue
         slider.maximumValue = self.maxValue
@@ -139,6 +141,33 @@ public class RNDebugItemTextField: RNDebugItem, RNDebugItemViewable {
     }
 }
 
+public class RNDebugItemTextView: RNDebugItem, RNDebugItemViewable, UITextViewDelegate {
+    
+    weak var view:UIView?
+
+    var ctrlFunc: RNViewTextViewCtrlFunc?
+    init(ctrlFunc:RNViewTextViewCtrlFunc){
+        super.init()
+        super.viewable = self
+        self.ctrlFunc = ctrlFunc
+    }
+    
+    func createViewForItem() -> UIView {
+        let frame = CGRect(x: 0, y: 0, width: 200, height: 50)
+        let textView = UITextView(frame: frame)
+        textView.delegate = self
+        view = textView
+        return textView
+    }
+    func updateView() {
+        
+    }
+    @objc public func textViewDidChange(textView: UITextView)
+    {
+        ctrlFunc?(textView)
+    }
+}
+
 /**
     It is UIButton wapper.
     This class display on a debug window.
@@ -159,6 +188,9 @@ public class RNDebugItemButton : RNDebugItem, RNDebugItemViewable {
     func createViewForItem() -> UIView {
         let frame = CGRect(x: 0, y: 0, width: 200, height: 10)
         let button = UIButton(type: .System)
+        button.layer.cornerRadius = 0.5
+        button.layer.borderWidth = 1.1
+        button.layer.borderColor = UIColor(red: 30.0/255.0, green: 108/255.0, blue: 232/255.0, alpha: 1).CGColor
         button.frame = frame
         button.addTarget(self, action: #selector(RNDebugItemButton.onTouchButton(_:)), forControlEvents: .TouchUpInside)
         view = button
