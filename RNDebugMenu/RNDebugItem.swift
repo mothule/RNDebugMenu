@@ -29,6 +29,7 @@ protocol RNDebugItemViewable {
 }
 public class RNDebugItem : NSObject{
     var viewable: RNDebugItemViewable!
+    weak var view: UIView?
 }
 
 
@@ -37,7 +38,6 @@ public class RNDebugItem : NSObject{
     This class Display label on a debug window.
  */
 public class RNDebugItemLabel: RNDebugItem, RNDebugItemViewable {
-    weak var view: UIView?
     var loopTimer: NSTimer!
     var drawFunc: RNViewDrawFunc?
     
@@ -79,7 +79,6 @@ public class RNDebugItemLabel: RNDebugItem, RNDebugItemViewable {
     And it can be control UISlider.
  */
 public class RNDebugItemSlider: RNDebugItem, RNDebugItemViewable {
-    weak var view: UIView?
     var ctrlFunc: RNViewSliderCtrlFunc?
     var minValue: Float = 0.0
     var maxValue: Float = 1.0
@@ -116,7 +115,7 @@ public class RNDebugItemSlider: RNDebugItem, RNDebugItemViewable {
     And it can be input strings.
  */
 public class RNDebugItemTextField: RNDebugItem, RNDebugItemViewable {
-    weak var view: UIView?
+   
     var ctrlFunc: RNViewTextFieldCtrlFunc?
     init(ctrlFunc: RNViewTextFieldCtrlFunc) {
         super.init()
@@ -143,7 +142,7 @@ public class RNDebugItemTextField: RNDebugItem, RNDebugItemViewable {
 
 public class RNDebugItemTextView: RNDebugItem, RNDebugItemViewable, UITextViewDelegate {
     
-    weak var view:UIView?
+    
 
     var ctrlFunc: RNViewTextViewCtrlFunc?
     init(ctrlFunc:RNViewTextViewCtrlFunc){
@@ -174,7 +173,7 @@ public class RNDebugItemTextView: RNDebugItem, RNDebugItemViewable, UITextViewDe
     And it can be invoke event.
  */
 public class RNDebugItemButton : RNDebugItem, RNDebugItemViewable {
-    weak var view:UIView?
+   
     var ctrlFunc: RNViewButtonCtrlFunc?
     var drawFunc: RNViewButtonDrawFunc?
     

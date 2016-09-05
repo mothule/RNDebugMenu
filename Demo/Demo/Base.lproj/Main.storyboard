@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Sign up-->
@@ -18,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q37-Fe-hgu">
-                                <rect key="frame" x="146" y="319" width="82" height="30"/>
+                                <rect key="frame" x="142" y="319" width="82" height="30"/>
                                 <state key="normal" title="Show/Hide">
                                     <color key="titleColor" red="0.11764705882352941" green="0.42352941176470588" blue="0.90980392156862744" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -26,39 +27,66 @@
                                     <action selector="onTouchButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PlD-2E-Ljr"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Choose your birthdate" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0zd-tF-uJo">
-                                <rect key="frame" x="39" y="205" width="296" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Choose your name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9vG-Bf-PsT">
-                                <rect key="frame" x="39" y="116" width="296" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <action selector="onEditingChanged:" destination="BYZ-38-t0r" eventType="editingChanged" id="zqn-ap-FaG"/>
-                                    <action selector="onEditingDidEnd:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="AYw-pk-Goc"/>
-                                </connections>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g8u-D6-RDV">
-                                <rect key="frame" x="39" y="269" width="296" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g8u-D6-RDV">
+                                <rect key="frame" x="31" y="269" width="312" height="30"/>
                                 <color key="backgroundColor" red="0.20000000000000001" green="0.59999999999999998" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="Continue"/>
+                                <connections>
+                                    <action selector="onTouchContinue:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Cbe-Ma-RvG"/>
+                                </connections>
                             </button>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="k5G-oL-Efk">
-                                <rect key="frame" x="39" y="161" width="296" height="29"/>
-                                <segments>
-                                    <segment title="Male"/>
-                                    <segment title="Female"/>
-                                </segments>
-                            </segmentedControl>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="QGH-ur-Tib">
+                                <rect key="frame" x="16" y="117" width="343" height="120"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Choose your name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9vG-Bf-PsT">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="onEditingChanged:" destination="BYZ-38-t0r" eventType="editingChanged" id="zqn-ap-FaG"/>
+                                            <action selector="onEditingDidEnd:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="AYw-pk-Goc"/>
+                                        </connections>
+                                    </textField>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="k5G-oL-Efk">
+                                        <rect key="frame" x="0.0" y="46" width="343" height="29"/>
+                                        <segments>
+                                            <segment title="Male"/>
+                                            <segment title="Female"/>
+                                        </segments>
+                                        <connections>
+                                            <action selector="onValueChangedGender:" destination="BYZ-38-t0r" eventType="valueChanged" id="IGu-ua-V4l"/>
+                                        </connections>
+                                    </segmentedControl>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Choose your birthdate" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0zd-tF-uJo">
+                                        <rect key="frame" x="0.0" y="90" width="343" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="g8u-D6-RDV" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="15" id="Axt-tr-f5N"/>
+                            <constraint firstItem="QGH-ur-Tib" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="53" id="FBK-cm-PoC"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="QGH-ur-Tib" secondAttribute="trailing" id="FcU-Aq-whD"/>
+                            <constraint firstItem="g8u-D6-RDV" firstAttribute="top" secondItem="QGH-ur-Tib" secondAttribute="bottom" constant="32" id="XB2-oB-mwC"/>
+                            <constraint firstItem="g8u-D6-RDV" firstAttribute="top" secondItem="QGH-ur-Tib" secondAttribute="bottom" constant="20" id="dC3-4X-kDB"/>
+                            <constraint firstItem="QGH-ur-Tib" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="f3S-Qe-Dpk"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="g8u-D6-RDV" secondAttribute="trailing" constant="16" id="y90-VB-mYq"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="dC3-4X-kDB"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Sign up" id="cQo-Rb-ijP"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="birthDateTextField" destination="0zd-tF-uJo" id="12A-nF-BB1"/>
+                        <outlet property="continueButton" destination="g8u-D6-RDV" id="Jcl-Pe-sfQ"/>
                         <outlet property="textField" destination="9vG-Bf-PsT" id="XO6-Hj-AP5"/>
                         <segue destination="bnO-gi-08t" kind="show" identifier="details" id="m7t-c2-V1r"/>
                     </connections>

@@ -16,8 +16,25 @@ protocol RNDebugItemListener {
     func listenChangedValue()
 }
 
+public protocol RNKey {
+    var Name:String { get }
+}
+
+extension String: RNKey {
+    public var Name:String { get{ return self } }
+}
+extension Int:RNKey{
+    public var Name:String { get{return String(self) }}
+}
+extension Float:RNKey{
+    public var Name:String { get{return String(self) }}
+}
+extension Double:RNKey{
+    public var Name:String { get{return String(self) }}
+}
 
 public class RNDebugManager {
+    
     private static var instance: RNDebugManager!
     public static var sharedInstance: RNDebugManager {
         if instance == nil { instance = RNDebugManager() }
@@ -26,6 +43,7 @@ public class RNDebugManager {
 
     private var window: RNDebugWindow!
     private var items: [RNDebugItem] = []
+    private var itemHash: [String:RNDebugItem] = [:]
     private var listener: RNDebugItemListener?
 
     public func addValueLabel(drawer: RNViewDrawFunc) {
@@ -37,17 +55,26 @@ public class RNDebugManager {
     public func addValueTextField(ctrlFunc: RNViewTextFieldCtrlFunc) {
         items.append(RNDebugItemTextField(ctrlFunc:ctrlFunc))
     }
-    public func addValueTextView(ctrlFunc: RNViewTextViewCtrlFunc){
-        items.append(RNDebugItemTextView(ctrlFunc:ctrlFunc))
+    public func addValueTextView(key:RNKey, ctrlFunc: RNViewTextViewCtrlFunc){
+        let item = RNDebugItemTextView(ctrlFunc:ctrlFunc)
+        items.append(item)
+        itemHash[key.Name] = item
     }
     public func addButton(ctrlFunc: RNViewButtonCtrlFunc, drawFunc: RNViewButtonDrawFunc){
         items.append(RNDebugItemButton(ctrlFunc: ctrlFunc, drawFunc: drawFunc))
+    }
+    
+    public func viewByName<T>(name:String) -> T? {
+        if itemHash.contains({k,_ in k == name }) {
+            return itemHash[name]!.view as? T
+        }
+        return nil
     }
 
 
     public func switchShowOrClose() {
         let size = UIScreen.mainScreen().bounds.size
-        let frame = CGRect(x: 0, y: 0, width: size.width, height: 50)
+        let frame = CGRect(x: 0, y: size.height * 0.3 , width: size.width, height: size.height * 0.5)
 
         if window == nil {
             window = RNDebugWindow(frame: frame)
@@ -73,6 +100,7 @@ public class RNDebugManager {
 
 extension RNDebugManager : RNDebugViewControllerListener {
     func closeWindow() {
+        window.rootViewController = nil
         window = nil
     }
 }
