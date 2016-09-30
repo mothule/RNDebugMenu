@@ -72,8 +72,8 @@ func changeColor(slider: UISlider) {
 
 # Runtime Requirements
 
-- iOS 9.3
-- Swift 2.2
+- iOS 10 later
+- Swift 3.0 later
 
 # Future roadmap
 
