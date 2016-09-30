@@ -47,18 +47,18 @@ class ViewController: UIViewController {
     }
     
     
-    @IBAction func onValueChangedGender(sender: UISegmentedControl) {
+    @IBAction func onValueChangedGender(_ sender: UISegmentedControl) {
         profile?.gender =  Gender.init(rawValue: sender.selectedSegmentIndex)
     }
-    @IBAction func onTouchContinue(sender: UIButton) {
+    @IBAction func onTouchContinue(_ sender: UIButton) {
     }
-    @IBAction func onEditingDidEnd(sender: UITextField) {
+    @IBAction func onEditingDidEnd(_ sender: UITextField) {
         profile?.name = sender.text!
     }
-    @IBAction func onEditingChanged(sender: UITextField) {
+    @IBAction func onEditingChanged(_ sender: UITextField) {
         profile?.name = sender.text!
     }
-    @IBAction func onTouchButton(sender: UIButton) {
+    @IBAction func onTouchButton(_ sender: UIButton) {
         RNDebugManager.sharedInstance.switchShowOrClose()
     }
 
@@ -84,7 +84,7 @@ class ViewController: UIViewController {
         }
         
         RNDebugManager.sharedInstance.addValueSlider({ [weak self] (slider) in
-            self?.changeColor(slider!)
+            self?.changeColor(slider: slider!)
             }, minValue: 0.0, maxValue: 1.0)
 
         RNDebugManager.sharedInstance.addValueTextField { [weak self] (textField) in
@@ -100,19 +100,19 @@ class ViewController: UIViewController {
             self?.profile?.name = ""
             self?.textField.text = ""
             }, drawFunc: {(button) in
-                button?.setTitle("Clear", forState: .Normal)
+                button?.setTitle("Clear", for: .normal)
         })
         
         RNDebugManager.sharedInstance.addButton({ [weak self] (button) in
             
             
             let textView:UITextView = RNDebugManager.sharedInstance.viewByName("area")!
-            let alert = UIAlertController(title: "Debug", message: textView.text, preferredStyle: .Alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+            let alert = UIAlertController(title: "Debug", message: textView.text, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             
-            self?.presentViewController(alert, animated: true, completion: nil)
+            self?.present(alert, animated: true, completion: nil)
             }, drawFunc:{(button) in
-                button?.setTitle("Show Alert", forState: .Normal)
+                button?.setTitle("Show Alert", for: .normal)
         })
         
         

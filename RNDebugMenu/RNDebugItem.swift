@@ -38,10 +38,10 @@ public class RNDebugItem : NSObject{
     This class Display label on a debug window.
  */
 public class RNDebugItemLabel: RNDebugItem, RNDebugItemViewable {
-    var loopTimer: NSTimer!
+    var loopTimer: Timer!
     var drawFunc: RNViewDrawFunc?
     
-    init(drawFunc: RNViewDrawFunc) {
+    init(drawFunc: @escaping RNViewDrawFunc) {
         super.init()
         super.viewable = self
         self.drawFunc = drawFunc
@@ -54,7 +54,7 @@ public class RNDebugItemLabel: RNDebugItem, RNDebugItemViewable {
         view = label
         updateView()
         
-        loopTimer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(RNDebugItemLabel.repeatsTimer(_:)), userInfo: nil, repeats: true)
+        loopTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(RNDebugItemLabel.repeatsTimer(timer:)), userInfo: nil, repeats: true)
         
         return label
     }
@@ -63,7 +63,7 @@ public class RNDebugItemLabel: RNDebugItem, RNDebugItemViewable {
         if loopTimer != nil { loopTimer.invalidate() }
     }
     
-    @objc func repeatsTimer(timer: NSTimer) {
+    @objc func repeatsTimer(timer: Timer) {
         updateView()
     }
     
@@ -82,7 +82,7 @@ public class RNDebugItemSlider: RNDebugItem, RNDebugItemViewable {
     var ctrlFunc: RNViewSliderCtrlFunc?
     var minValue: Float = 0.0
     var maxValue: Float = 1.0
-    init(ctrlFunc: RNViewSliderCtrlFunc, minValue: Float, maxValue: Float) {
+    init(ctrlFunc: @escaping RNViewSliderCtrlFunc, minValue: Float, maxValue: Float) {
         super.init()
         super.viewable = self
         self.ctrlFunc = ctrlFunc
@@ -95,7 +95,7 @@ public class RNDebugItemSlider: RNDebugItem, RNDebugItemViewable {
         slider.minimumValue = self.minValue
         slider.maximumValue = self.maxValue
         slider.value = 0.0
-        slider.addTarget(self, action: #selector(RNDebugItemSlider.onValueChanged(_:)), forControlEvents: .ValueChanged)
+        slider.addTarget(self, action: #selector(RNDebugItemSlider.onValueChanged(sender:)), for: .valueChanged)
         
         view = slider
         updateView()
@@ -117,7 +117,7 @@ public class RNDebugItemSlider: RNDebugItem, RNDebugItemViewable {
 public class RNDebugItemTextField: RNDebugItem, RNDebugItemViewable {
    
     var ctrlFunc: RNViewTextFieldCtrlFunc?
-    init(ctrlFunc: RNViewTextFieldCtrlFunc) {
+    init(ctrlFunc: @escaping RNViewTextFieldCtrlFunc) {
         super.init()
         super.viewable = self
         self.ctrlFunc = ctrlFunc
@@ -125,8 +125,8 @@ public class RNDebugItemTextField: RNDebugItem, RNDebugItemViewable {
     func createViewForItem() -> UIView {
         let frame = CGRect(x: 0, y: 0, width: 200, height: 10)
         let textField = UITextField(frame: frame)
-        textField.addTarget(self, action: #selector(RNDebugItemTextField.onEditingChanged(_:)), forControlEvents: .EditingChanged)
-        textField.borderStyle = .RoundedRect
+        textField.addTarget(self, action: #selector(RNDebugItemTextField.onEditingChanged(sender:)), for: .editingChanged)
+        textField.borderStyle = .roundedRect
         textField.placeholder = "Here is UITextField"
         view = textField
         updateView()
@@ -145,7 +145,7 @@ public class RNDebugItemTextView: RNDebugItem, RNDebugItemViewable, UITextViewDe
     
 
     var ctrlFunc: RNViewTextViewCtrlFunc?
-    init(ctrlFunc:RNViewTextViewCtrlFunc){
+    init(ctrlFunc:@escaping RNViewTextViewCtrlFunc){
         super.init()
         super.viewable = self
         self.ctrlFunc = ctrlFunc
@@ -161,7 +161,7 @@ public class RNDebugItemTextView: RNDebugItem, RNDebugItemViewable, UITextViewDe
     func updateView() {
         
     }
-    @objc public func textViewDidChange(textView: UITextView)
+    @objc public func textViewDidChange(_ textView: UITextView)
     {
         ctrlFunc?(textView)
     }
@@ -177,7 +177,7 @@ public class RNDebugItemButton : RNDebugItem, RNDebugItemViewable {
     var ctrlFunc: RNViewButtonCtrlFunc?
     var drawFunc: RNViewButtonDrawFunc?
     
-    init(ctrlFunc: RNViewButtonCtrlFunc, drawFunc:RNViewButtonDrawFunc){
+    init(ctrlFunc: @escaping RNViewButtonCtrlFunc, drawFunc:@escaping RNViewButtonDrawFunc){
         super.init()
         super.viewable = self
         self.ctrlFunc = ctrlFunc
@@ -186,12 +186,12 @@ public class RNDebugItemButton : RNDebugItem, RNDebugItemViewable {
     
     func createViewForItem() -> UIView {
         let frame = CGRect(x: 0, y: 0, width: 200, height: 10)
-        let button = UIButton(type: .System)
+        let button = UIButton(type: .system)
         button.layer.cornerRadius = 0.5
         button.layer.borderWidth = 1.1
-        button.layer.borderColor = UIColor(red: 30.0/255.0, green: 108/255.0, blue: 232/255.0, alpha: 1).CGColor
+        button.layer.borderColor = UIColor(red: 30.0/255.0, green: 108/255.0, blue: 232/255.0, alpha: 1).cgColor
         button.frame = frame
-        button.addTarget(self, action: #selector(RNDebugItemButton.onTouchButton(_:)), forControlEvents: .TouchUpInside)
+        button.addTarget(self, action: #selector(RNDebugItemButton.onTouchButton(sender:)), for: .touchUpInside)
         view = button
         updateView()
         return button

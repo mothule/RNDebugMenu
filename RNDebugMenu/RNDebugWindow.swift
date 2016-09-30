@@ -9,21 +9,21 @@
 import Foundation
 import UIKit
 
-public class RNDebugWindow : UIWindow
+open class RNDebugWindow : UIWindow
 {
     enum BehaviorMode : Int{
-        case None
-        case MoveWindowPosition
-        case ChangeWindowSize
+        case none
+        case moveWindowPosition
+        case changeWindowSize
     }
     
-    private var behaviorMode:BehaviorMode = .None
-    private var locationInitialTouch:CGPoint!
+    fileprivate var behaviorMode:BehaviorMode = .none
+    fileprivate var locationInitialTouch:CGPoint!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = UIColor(red: 0.3, green: 0.4, blue: 0.5, alpha: 0.7)
-        self.userInteractionEnabled = true
+        self.isUserInteractionEnabled = true
         self.windowLevel = UIWindowLevelAlert
         self.rootViewController = RNDebugViewController()
     }
@@ -32,37 +32,37 @@ public class RNDebugWindow : UIWindow
     }
     
     //MARK: - Window Behavior
-    override public func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override open func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let touch = touches.first {
-            let location = touch.locationInView(self)
+            let location = touch.location(in: self)
             locationInitialTouch = location
             if location.x > bounds.width - 20 && location.y > bounds.height - 20{
-                behaviorMode = .ChangeWindowSize
+                behaviorMode = .changeWindowSize
             }else{
-                behaviorMode = .MoveWindowPosition
+                behaviorMode = .moveWindowPosition
             }
         }
     }
     
-    override public func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override open func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let touch = touches.first {
-            let location = touch.locationInView(self)
-            if behaviorMode == .ChangeWindowSize {
+            let location = touch.location(in: self)
+            if behaviorMode == .changeWindowSize {
                 frame = CGRect(origin: frame.origin, size: CGSize(width: location.x, height: location.y ))
             }else{
                 frame = frame.offsetBy(dx: location.x - locationInitialTouch.x, dy: location.y - locationInitialTouch.y)
             }
         }
     }
-    override public func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override open func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let touch = touches.first {
-            let location = touch.locationInView(self)
-            if behaviorMode == .ChangeWindowSize {
+            let location = touch.location(in: self)
+            if behaviorMode == .changeWindowSize {
                 frame = CGRect(origin: frame.origin, size: CGSize(width: location.x, height: location.y ))
             }else{
                 frame = frame.offsetBy(dx: location.x - locationInitialTouch.x, dy: location.y - locationInitialTouch.y)
             }
-            behaviorMode = .None
+            behaviorMode = .none
         }
     }
 }
