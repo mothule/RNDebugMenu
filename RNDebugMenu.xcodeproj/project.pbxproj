@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		543130651D9E8D9E00EE16AE /* RNDebugItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543130641D9E8D9E00EE16AE /* RNDebugItem.swift */; };
+		543130661D9E8D9E00EE16AE /* RNDebugItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543130641D9E8D9E00EE16AE /* RNDebugItem.swift */; };
 		546DFE8D1D75CCF9008B928E /* RNDebugMenu.h in Headers */ = {isa = PBXBuildFile; fileRef = 546DFE8C1D75CCF9008B928E /* RNDebugMenu.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		546DFE941D75CCF9008B928E /* RNDebugMenu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 546DFE891D75CCF9008B928E /* RNDebugMenu.framework */; };
 		546DFE991D75CCF9008B928E /* RNDebugMenuTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546DFE981D75CCF9008B928E /* RNDebugMenuTests.swift */; };
@@ -26,6 +28,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		543130641D9E8D9E00EE16AE /* RNDebugItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNDebugItem.swift; sourceTree = "<group>"; };
 		546DFE891D75CCF9008B928E /* RNDebugMenu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RNDebugMenu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		546DFE8C1D75CCF9008B928E /* RNDebugMenu.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNDebugMenu.h; sourceTree = "<group>"; };
 		546DFE8E1D75CCF9008B928E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -82,6 +85,7 @@
 				546DFEA31D75CDE8008B928E /* RNDebugManager.swift */,
 				546DFEA41D75CDE8008B928E /* RNDebugViewController.swift */,
 				546DFEA51D75CDE8008B928E /* RNDebugWindow.swift */,
+				543130641D9E8D9E00EE16AE /* RNDebugItem.swift */,
 				546DFE8C1D75CCF9008B928E /* RNDebugMenu.h */,
 				546DFE8E1D75CCF9008B928E /* Info.plist */,
 			);
@@ -154,14 +158,18 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = mothule;
 				TargetAttributes = {
 					546DFE881D75CCF9008B928E = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0800;
+						ProvisioningStyle = Manual;
 					};
 					546DFE921D75CCF9008B928E = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0800;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -207,6 +215,7 @@
 			files = (
 				546DFEA71D75CDE8008B928E /* RNDebugViewController.swift in Sources */,
 				546DFEA81D75CDE8008B928E /* RNDebugWindow.swift in Sources */,
+				543130651D9E8D9E00EE16AE /* RNDebugItem.swift in Sources */,
 				546DFEA61D75CDE8008B928E /* RNDebugManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -215,6 +224,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				543130661D9E8D9E00EE16AE /* RNDebugItem.swift in Sources */,
 				546DFE991D75CCF9008B928E /* RNDebugMenuTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -244,8 +254,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -268,7 +280,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -293,8 +305,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -311,9 +325,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -325,7 +340,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -336,6 +353,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -343,7 +361,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -353,26 +373,33 @@
 				PRODUCT_BUNDLE_IDENTIFIER = jp.mothule.RNDebugMenu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
 		546DFEA11D75CCF9008B928E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = RNDebugMenuTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.mothule.RNDebugMenuTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		546DFEA21D75CCF9008B928E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = RNDebugMenuTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.mothule.RNDebugMenuTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

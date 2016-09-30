@@ -33,47 +33,47 @@ extension Double:RNKey{
     public var Name:String { get{return String(self) }}
 }
 
-public class RNDebugManager {
+open class RNDebugManager {
     
-    private static var instance: RNDebugManager!
-    public static var sharedInstance: RNDebugManager {
+    fileprivate static var instance: RNDebugManager!
+    open static var sharedInstance: RNDebugManager {
         if instance == nil { instance = RNDebugManager() }
         return instance
     }
 
-    private var window: RNDebugWindow!
-    private var items: [RNDebugItem] = []
-    private var itemHash: [String:RNDebugItem] = [:]
-    private var listener: RNDebugItemListener?
+    fileprivate var window: RNDebugWindow!
+    fileprivate var items: [RNDebugItem] = []
+    fileprivate var itemHash: [String:RNDebugItem] = [:]
+    fileprivate var listener: RNDebugItemListener?
 
-    public func addValueLabel(drawer: RNViewDrawFunc) {
+    open func addValueLabel(_ drawer: @escaping RNViewDrawFunc) {
         items.append(RNDebugItemLabel(drawFunc: drawer))
     }
-    public func addValueSlider(ctrlFunc: RNViewSliderCtrlFunc, minValue: Float, maxValue: Float) {
+    open func addValueSlider(_ ctrlFunc: @escaping RNViewSliderCtrlFunc, minValue: Float, maxValue: Float) {
         items.append(RNDebugItemSlider(ctrlFunc: ctrlFunc, minValue:minValue, maxValue:maxValue))
     }
-    public func addValueTextField(ctrlFunc: RNViewTextFieldCtrlFunc) {
+    open func addValueTextField(_ ctrlFunc: @escaping RNViewTextFieldCtrlFunc) {
         items.append(RNDebugItemTextField(ctrlFunc:ctrlFunc))
     }
-    public func addValueTextView(key:RNKey, ctrlFunc: RNViewTextViewCtrlFunc){
+    open func addValueTextView(_ key:RNKey, ctrlFunc: @escaping RNViewTextViewCtrlFunc){
         let item = RNDebugItemTextView(ctrlFunc:ctrlFunc)
         items.append(item)
         itemHash[key.Name] = item
     }
-    public func addButton(ctrlFunc: RNViewButtonCtrlFunc, drawFunc: RNViewButtonDrawFunc){
+    open func addButton(_ ctrlFunc: @escaping RNViewButtonCtrlFunc, drawFunc: @escaping RNViewButtonDrawFunc){
         items.append(RNDebugItemButton(ctrlFunc: ctrlFunc, drawFunc: drawFunc))
     }
     
-    public func viewByName<T>(name:String) -> T? {
-        if itemHash.contains({k,_ in k == name }) {
+    open func viewByName<T>(_ name:String) -> T? {
+        if itemHash.contains(where: {k,_ in k == name }) {
             return itemHash[name]!.view as? T
         }
         return nil
     }
 
 
-    public func switchShowOrClose() {
-        let size = UIScreen.mainScreen().bounds.size
+    open func switchShowOrClose() {
+        let size = UIScreen.main.bounds.size
         let frame = CGRect(x: 0, y: size.height * 0.3 , width: size.width, height: size.height * 0.5)
 
         if window == nil {
@@ -91,7 +91,7 @@ public class RNDebugManager {
         }
     }
 
-    public func notifyChangedValue() {
+    open func notifyChangedValue() {
         if window != nil {
             listener?.listenChangedValue()
         }
